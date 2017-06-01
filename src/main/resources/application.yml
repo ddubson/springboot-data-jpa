@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/library
+    username: root
+    password: root
+
+logging.level:
+  org.springframework.boot.web: WARN
+  org.springframework.boot.context: WARN
+  org.springframework.web: WARN
+  org.springframework.orm: WARN
+  org.springframework.core: WARN
+  org.springframework.jmx: WARN
+  org.hibernate: WARN
+  org.apache.catalina: WARN
+
+server:
+  port: 9000
+
+flyway:
+  locations: classpath:/db/migration
