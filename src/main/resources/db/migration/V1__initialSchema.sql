@@ -11,6 +11,19 @@ CREATE TABLE books (
   FOREIGN KEY (author_id) REFERENCES authors (id)
 );
 
+CREATE TABLE genres (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100)
+);
+
+CREATE TABLE books_genres (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  book_id INT NOT NULL,
+  genre_id INT NOT NULL,
+  FOREIGN KEY (book_id) REFERENCES books(id),
+  FOREIGN KEY (genre_id) REFERENCES genres(id)
+);
+
 INSERT INTO authors (id, first_name, last_name)
 VALUES
   (1, 'Leo', 'Tolstoy'),

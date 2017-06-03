@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -19,4 +20,12 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "books_genres",
+            joinColumns = {
+                    @JoinColumn(name = "book_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "genre_id",
+                    nullable = false, updatable = false)})
+    List<Genre> genres;
 }
