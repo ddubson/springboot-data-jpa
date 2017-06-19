@@ -1,6 +1,7 @@
 ext {
-    mariadbClientVersion = "1.5.9"
+    springBootVersion = "1.5.3.RELEASE"
 }
+
 buildscript {
     ext {
         springBootVersion = "1.5.3.RELEASE"
@@ -27,14 +28,13 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web:1.5.3.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.3.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
     compile "org.projectlombok:lombok:1.16.16"
     compile "org.flywaydb:flyway-core:4.2.0"
-    compile "org.mariadb.jdbc:mariadb-java-client:$mariadbClientVersion"
+    compile 'com.h2database:h2:1.4.195'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.3.RELEASE'
-    testCompile 'com.h2database:h2:1.4.195'
 }
 
