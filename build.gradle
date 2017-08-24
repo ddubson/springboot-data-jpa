@@ -1,44 +1,67 @@
 buildscript {
     ext {
         springBootVersion = "1.5.6.RELEASE"
+        springVersion = "4.3.10.RELEASE"
+        springBatchVersion = "3.0.8.RELEASE"
         kotlinVersion = "1.1.4-2"
+        mysqlVersion = "5.1.43"
     }
 
-    repositories { mavenCentral() }
+    repositories {
+        mavenCentral()
+    }
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion"
     }
 }
 
+apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: "kotlin"
 apply plugin: "kotlin-spring"
-apply plugin: "kotlin-jpa"
 apply plugin: 'org.springframework.boot'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories { mavenCentral() }
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: "kotlin"
+    apply plugin: "kotlin-spring"
+    apply plugin: 'org.springframework.boot'
+
+    repositories { mavenCentral() }
+
+    dependencies {
+        compile "mysql:mysql-connector-java:$mysqlVersion"
+        compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
+        compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    }
+}
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
     compile "org.projectlombok:lombok:1.16.16"
     compile "org.flywaydb:flyway-core:4.2.0"
     compile 'com.h2database:h2:1.4.195'
 
-    //testCompile 'junit:junit:4.12'
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+    testCompile 'junit:junit:4.12'
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 }
 
-compileKotlin { kotlinOptions { jvmTarget = "1.8" } }
-compileTestKotlin { kotlinOptions { jvmTarget = "1.8" } }
+project(":data-loader") {
+    dependencies {
+        compile "org.springframework.boot:spring-boot-starter:$springBootVersion"
+        compile "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
+        compile "org.springframework.batch:spring-batch-core:$springBatchVersion"
+        compile "org.springframework:spring-web:$springVersion"
+        compile "com.fasterxml.jackson.core:jackson-databind:2.8.10"
+        compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0"
+    }
+}
+

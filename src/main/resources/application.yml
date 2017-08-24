@@ -1,11 +1,12 @@
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:./library
-    platform: h2
+  #  driver-class-name: org.h2.Driver
+  #  url: jdbc:h2:mem:./library
+  #  platform: h2
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/batch_jobs
+    username: root
   jpa.hibernate.ddl-auto: none
-
-flyway.locations: classpath:/db/migration
 
 logging.level:
   org.springframework.boot.web: WARN
@@ -20,3 +21,6 @@ logging.level:
 server:
   port: 9000
 
+flyway:
+  locations: classpath:/db/migration
+  enabled: true

@@ -1,1 +1,3 @@
 rootProject.name = 'springboot-data'
+
+include "data-loader"
