@@ -18,8 +18,6 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
 apply plugin: "kotlin"
 apply plugin: "kotlin-spring"
 apply plugin: 'org.springframework.boot'
@@ -28,8 +26,6 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 allprojects {
-    apply plugin: 'java'
-    apply plugin: 'idea'
     apply plugin: "kotlin"
     apply plugin: "kotlin-spring"
     apply plugin: 'org.springframework.boot'

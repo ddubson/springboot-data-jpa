@@ -11,7 +11,6 @@ import org.springframework.batch.core.step.skip.AlwaysSkipItemSkipPolicy
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider
 import org.springframework.batch.item.database.JdbcBatchItemWriter
 import org.springframework.batch.item.support.ListItemReader
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.web.client.RestTemplateBuilder
@@ -26,12 +25,8 @@ import javax.sql.DataSource
 @EnableBatchProcessing
 class Application(val jobBuilderFactory: JobBuilderFactory,
                   val stepBuilderFactory: StepBuilderFactory,
+                  val nycUrl: String,
                   val dataSource: DataSource) {
-    @Bean
-    fun nycUrl(@Value("${data.url}") url: String): String {
-        return "$nycUrl?\$limit=10&\$\$app_token=token"
-    }
-
     @Bean
     fun httpReader(): ListItemReader<ServiceRequest> {
         val restTemplate = RestTemplate()
@@ -41,6 +36,7 @@ class Application(val jobBuilderFactory: JobBuilderFactory,
         serviceRequests.forEach { i ->
             println("[${Thread.currentThread().name}] item: $i")
         }
+
         return ListItemReader(serviceRequests.toList())
     }
 

@@ -9,8 +9,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/batch_jobs
     username: root
+    password: root
 
-data:
+nyc.data:
   appToken: token
   limit: 500
   url: https://data.cityofnewyork.us/resource/fhrw-4uyv.json
