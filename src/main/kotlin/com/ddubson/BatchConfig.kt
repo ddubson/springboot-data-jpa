@@ -45,17 +45,12 @@ class BatchConfig(val jobBuilderFactory: JobBuilderFactory,
 
         val serviceRequests: Array<ServiceRequest> = restTemplate.getForObject(nycUrl, Array<ServiceRequest>::class.java)
 
-        serviceRequests.forEach { i ->
-            println("[${Thread.currentThread().name}] item: $i")
-        }
-
         return ListItemReader(serviceRequests.toList())
     }
 
     @Bean
     fun itemWriter(): JdbcBatchItemWriter<ServiceRequest> {
         val itemWriter = JdbcBatchItemWriter<ServiceRequest>()
-        println("[${Thread.currentThread().name}] Writing items.")
         itemWriter.setDataSource(dataSource)
         itemWriter.setSql("""
             INSERT INTO service_requests
