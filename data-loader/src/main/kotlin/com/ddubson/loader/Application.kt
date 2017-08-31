@@ -45,7 +45,12 @@ class Application(val jobBuilderFactory: JobBuilderFactory,
         val itemWriter = JdbcBatchItemWriter<ServiceRequest>()
         println("[${Thread.currentThread().name}] Writing items.")
         itemWriter.setDataSource(dataSource)
-        itemWriter.setSql("INSERT INTO service_requests (uniqueKey, addressType, agency) VALUES (:uniqueKey, :addressType, :agency)")
+        itemWriter.setSql("""
+            INSERT INTO service_requests
+                (uniqueKey, createdDate, closedDate, addressType, agencyName, agency)
+            VALUES
+                (:uniqueKey, :createdDate, :closedDate, :addressType, :agencyName, :agency)
+            """)
         itemWriter.setItemSqlParameterSourceProvider(BeanPropertyItemSqlParameterSourceProvider<ServiceRequest>())
         itemWriter.afterPropertiesSet()
 
