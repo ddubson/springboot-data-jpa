@@ -6,8 +6,11 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/batch_jobs
     username: root
-    password: root
   jpa.hibernate.ddl-auto: none
+  batch:
+    job:
+      enabled: false
+      names: 311-data
 
 logging.level:
   org.springframework.boot.web: WARN
@@ -25,3 +28,8 @@ server:
 flyway:
   locations: classpath:/db/migration
   enabled: true
+
+nyc.data:
+  url: https://data.cityofnewyork.us/resource/fhrw-4uyv.json
+  appToken: yourTokenHereOrInEnv
+  limit: 500

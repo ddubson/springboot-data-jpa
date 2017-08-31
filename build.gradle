@@ -42,22 +42,17 @@ allprojects {
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
+    compile "org.springframework.batch:spring-batch-core:$springBatchVersion"
+    compile "org.springframework:spring-web:$springVersion"
+    compile "com.fasterxml.jackson.core:jackson-databind:2.8.10"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0"
     compile "org.projectlombok:lombok:1.16.16"
     compile "org.flywaydb:flyway-core:4.2.0"
     compile 'com.h2database:h2:1.4.195'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
-}
-
-project(":data-loader") {
-    dependencies {
-        compile "org.springframework.boot:spring-boot-starter:$springBootVersion"
-        compile "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
-        compile "org.springframework.batch:spring-batch-core:$springBatchVersion"
-        compile "org.springframework:spring-web:$springVersion"
-        compile "com.fasterxml.jackson.core:jackson-databind:2.8.10"
-        compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0"
-    }
 }
 
