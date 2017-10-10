@@ -9,7 +9,6 @@ spring:
       enabled: false
       names: 311-data
 
-
 logging.level:
   org.springframework.boot.web: WARN
   org.springframework.boot.context: WARN

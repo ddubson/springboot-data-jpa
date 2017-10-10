@@ -41,6 +41,7 @@ dependencies {
     compile "org.flywaydb:flyway-core:4.2.0"
     runtime 'com.h2database:h2:1.4.195'
     runtime "mysql:mysql-connector-java:$mysqlVersion"
+    runtime 'javax.xml.bind:jaxb-api:2.3.0'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
