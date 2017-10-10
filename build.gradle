@@ -1,7 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = "1.5.6.RELEASE"
-        springVersion = "4.3.10.RELEASE"
+        springBootVersion = "1.5.7.RELEASE"
         springBatchVersion = "3.0.8.RELEASE"
         kotlinVersion = "1.1.51"
         mysqlVersion = "5.1.43"
@@ -36,7 +35,6 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
 
     compile "org.springframework.batch:spring-batch-core:$springBatchVersion"
-    compile "org.springframework:spring-web:$springVersion"
     compile "com.fasterxml.jackson.core:jackson-databind:2.8.10"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0"
     compile "org.projectlombok:lombok:1.16.16"
