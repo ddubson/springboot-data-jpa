@@ -54,9 +54,15 @@ class BatchConfig(val jobBuilderFactory: JobBuilderFactory,
         itemWriter.setDataSource(dataSource)
         itemWriter.setSql("""
             INSERT INTO service_requests
-                (uniqueKey, createdDate, closedDate, addressType, agencyName, agency)
+                (uniqueKey, createdDate, closedDate, addressType, agencyName, agency,
+                complaintType, descriptor, locationType, incidentType, incidentZip,
+                incidentAddress, streetName, crossStreet1, crossStreet2, intersectionStreet1,
+                intersectionStreet2, city, landmark, facilityType, status)
             VALUES
-                (:uniqueKey, :createdDate, :closedDate, :addressType, :agencyName, :agency)
+                (:uniqueKey, :createdDate, :closedDate, :addressType, :agencyName, :agency,
+                :complaintType, :descriptor, :locationType, :incidentType, :incidentZip,
+                :incidentAddress, :streetName, :crossStreet1, :crossStreet2, :intersectionStreet1,
+                :intersectionStreet2, :city, :landmark, :facilityType, :status)
             """)
         itemWriter.setItemSqlParameterSourceProvider(BeanPropertyItemSqlParameterSourceProvider<ServiceRequest>())
         itemWriter.afterPropertiesSet()
